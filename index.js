@@ -2,22 +2,37 @@ var os = require('os');
 var config = require('./config.json');
 var username = config.spotify_username;
 var password = config.spotify_password;
-var spotify;
+var server_address = config.server_address;
+var spotify_init;
 
 if (os.arch() == 'arm') {
-    spotify = require('./lib/pi/spotify');
+    spotify_init = require('./lib/pi/spotify');
 } else {
-    spotify = require('./lib/mac/spotify');
+    spotify_init = require('./lib/mac/spotify');
 }
 
-spotify = spotify({ appkeyFile: 'spotify_appkey.key' });
+var spotify = spotify_init({ appkeyFile: 'spotify_appkey.key' });
+var queue = [];
+var playing = false;
 
-var ready = function()  {
-    spotify.player.play(spotify.createFromLink('spotify:track:3MjrueDQKVr6xDDseZwhEd'));
+var playSongFromQueue = function()  {
+    if (queue.length) spotify.player.play(queue.shift());
 };
 
 spotify.on({
-    ready: ready
+    ready: playSongFromQueue
+});
+
+spotify.player.on({
+    endOfTrack: playSongFromQueue
 });
 
 spotify.login(username, password, false, false);
+
+var socket = require('socket.io-client')(server_address);
+
+socket.on('add track to queue', function(link) {
+    var track = spotify.createFromLink(link);
+    queue.push(track);
+    if (!playing) playSongFromQueue();
+});

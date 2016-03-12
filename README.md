@@ -32,6 +32,6 @@ This one's a bit more involved (but not too bad):
 ## Usage
 Duplicate `config.json.example` and replace with your credentials. *Note: You will need a Spotify premium account to use this.*
 
-You will also have to go [here](https://devaccount.spotify.com/my-account/keys/) to get an app key. Copy the .key file (the binary link) into the root of this repo with the name `spotify\_appkey.key`. This should be the default name anyway.
+You will also have to go [here](https://devaccount.spotify.com/my-account/keys/) to get an app key. Copy the .key file (the binary link) into the root of this repo with the name `spotify_appkey.key`. This should be the default name anyway.
 
 Once you've done the above you are ready to go. Run `node index.js`, rock out to some Royal Blood and check back here for when I add some actual features. Enjoy.

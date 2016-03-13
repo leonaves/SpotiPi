@@ -1,13 +1,13 @@
 {
   "name": "SpotiPi",
-  "version": "0.0.0",
-  "description": "cba",
+  "version": "0.1.0",
+  "description": "A very lightweight Spotify client for the Raspberry Pi.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
-  "author": "Leon",
+  "repository": "git+ssh://git@github.com:leonaves/SpotiPi.git",
+  "author": "Leon Aves",
   "license": "BSD",
   "dependencies": {
     "socket.io-client": "~1.4.5"

@@ -8,7 +8,7 @@ You will need the following:
 - Node 0.10.x. Use nvm if you don't want to screw up your existing installation.
   - **node-spotify will not work on later versions of node so this is important.**
 - Libspotify installed on your machine (See instructions below).
-- A server running the (SpotiPi-Server)[https://github.com/leonaves/SpotiPi-Server/] component.
+- A server running the [SpotiPi-Server](https://github.com/leonaves/SpotiPi-Server/) component.
 
 ## Installing libspotify
 
@@ -31,7 +31,7 @@ This one's a bit more involved (but not too bad):
 3. Link the resulting .so files (in /usr/local/lib) into /usr/lib.
 
 ## Usage
-Duplicate `config.json.example` and replace with your credentials. *Note: You will need a Spotify premium account to use this.* As mentioned above, you will need a (SpotiPi-Server)[https://github.com/leonaves/SpotiPi-Server/] and to place the address of it in the config.
+Duplicate `config.json.example` and replace with your credentials. *Note: You will need a Spotify premium account to use this.* As mentioned above, you will need a [SpotiPi-Server](https://github.com/leonaves/SpotiPi-Server/) and to place the address of it in the config.
 
 You will also have to go [here](https://devaccount.spotify.com/my-account/keys/) to get an app key. Copy the .key file (the binary link) into the root of this repo with the name `spotify_appkey.key`. This should be the default name anyway.
 

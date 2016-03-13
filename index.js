@@ -16,7 +16,10 @@ var queue = [];
 var playing = false;
 
 var playSongFromQueue = function()  {
-    if (queue.length) spotify.player.play(queue.shift());
+    if (queue.length) {
+        spotify.player.play(queue.shift());
+        playing = true;
+    }
 };
 
 spotify.on({
@@ -35,4 +38,22 @@ socket.on('add track to queue', function(link) {
     var track = spotify.createFromLink(link);
     queue.push(track);
     if (!playing) playSongFromQueue();
+});
+
+socket.on('play', function() {
+    if (!playing) {
+        spotify.player.resume();
+        playing = true;
+    }
+});
+
+socket.on('pause', function() {
+    if (playing) {
+        spotify.player.pause();
+        playing = false;
+    }
+});
+
+socket.on('skip', function() {
+    playSongFromQueue();
 });

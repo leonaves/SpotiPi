@@ -19,6 +19,8 @@ var playSongFromQueue = function()  {
     if (queue.length) {
         spotify.player.play(queue.shift());
         playing = true;
+    } else {
+        playing = false;
     }
 };
 
